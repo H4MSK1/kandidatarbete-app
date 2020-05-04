@@ -67,11 +67,37 @@ This build the image `stresstest_flask_app_benchmark` and tags it as `latest`.
 Testing container 1
 
 ```
-ab -n 300 -c 100 http://localhost:6001/
+ab -l -r -n 100 -c 10 -k http://localhost:6001/
 ```
 
 Testing container 2
 
 ```
-ab -n 300 -c 100 http://localhost:6002/
+ab -l -r -n 100 -c 10 -k http://localhost:6002/
+```
+
+### Scenario 1 ApacheBench intervals
+
+1.
+
+```
+ab -l -r -n 100 -c 1 -k http://localhost:6001/
+```
+
+2.
+
+```
+ab -l -r -n 100 -c 10 -k http://localhost:6001/
+```
+
+3.
+
+```
+ab -l -r -n 100 -c 25 -k http://localhost:6001/
+```
+
+4.
+
+```
+ab -l -r -n 100 -c 50 -k http://localhost:6001/
 ```
