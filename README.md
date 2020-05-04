@@ -2,21 +2,27 @@
 
 Created with Python using Flask Framework
 
-The predefined image name is **kandidatarbete-app_flask_app**
+The predefined image name is **stresstest_flask_app_benchmark**.
 
-#### Build image
+The containers are configured to occupy 2GB of RAM and 2 CPU cores by default.
+
+To monitor Container stats, run `docker stats`.
+
+### Build image
+
+This build the image `stresstest_flask_app_benchmark` and tags it as `latest`.
 
 ```
-docker-compose build --no-cache
+./build.sh
 ```
 
-#### Run single container
+### Run a single container instance
 
 ```
 ./start.sh
 ```
 
-#### Run multiple containers (2)
+### Run multiple containers (2 instances)
 
 ```
 ./start_multiple.sh
@@ -28,15 +34,44 @@ docker-compose build --no-cache
 ./stop.sh
 ```
 
-_Temporary notes_
-Stress test CPU using 16 threads for 30 seconds:
+### Stress test CPU
+
+#### Docker containers
 
 ```
-sysbench --test=cpu --time=30 --threads=16 run
+./stress_cpu.sh
 ```
 
-Stress test RAM that uses 75% of memory for 30 seconds:
+#### Host
 
 ```
-stress-ng --vm 1 --vm-bytes 75% --vm-method all --verify -t 30s -v
+./stress_cpu.sh host
+```
+
+### Stress test RAM
+
+#### Docker containers
+
+```
+./stress_ram.sh
+```
+
+#### Host
+
+```
+./stress_ram.sh host
+```
+
+### Testing requests with ApacheBench (ab)
+
+Testing container 1
+
+```
+ab -n 300 -c 100 http://localhost:6001/
+```
+
+Testing container 2
+
+```
+ab -n 300 -c 100 http://localhost:6002/
 ```

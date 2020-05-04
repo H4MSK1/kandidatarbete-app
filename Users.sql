@@ -1,3 +1,6 @@
+---
+--- THIS IS RANDOMLY GENERATED DATA THROUGH https://www.mockaroo.com/
+---
 create table Users (
 	id VARCHAR(40),
 	first_name VARCHAR(50),
