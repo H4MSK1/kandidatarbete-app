@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
   echo ""
 
   for container in `docker ps -q --filter ancestor=$image_name`; do 
-    docker inspect --format='{{.Name}}' $container
+    echo "Stressing container: $(docker inspect --format='{{.Name}}' $container)"
     docker exec $container $stress_cmd &
   done
 else
