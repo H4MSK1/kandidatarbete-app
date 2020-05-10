@@ -1,9 +1,9 @@
 #!/bin/sh
 
 image_name="stresstest_flask_app_benchmark"
-stress_load_capacity=50
+stress_load_capacity=75
 stress_time_seconds=30
-stress_cmd="stress-ng --cpu 0 -l ${stress_load_capacity} -t ${stress_time_seconds}s"
+stress_cmd="stress-ng --cpu 2 -l ${stress_load_capacity} -t ${stress_time_seconds}s"
 
 echo "-------------------------------------------------------"
 echo "Stress testing CPU at ${stress_load_capacity}% load capacity for $stress_time_seconds seconds"
@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
   echo ""
 
   for container in `docker ps -q --filter ancestor=$image_name`; do 
-    docker inspect --format='{{.Name}}' $container
+    echo "Stressing container: $(docker inspect --format='{{.Name}}' $container)"
     docker exec $container $stress_cmd &
   done
 else

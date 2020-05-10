@@ -42,7 +42,7 @@ This build the image `stresstest_flask_app_benchmark` and tags it as `latest`.
 ./stress_cpu.sh
 ```
 
-#### Host
+#### Host machine
 
 ```
 ./stress_cpu.sh host
@@ -56,48 +56,24 @@ This build the image `stresstest_flask_app_benchmark` and tags it as `latest`.
 ./stress_ram.sh
 ```
 
-#### Host
+#### Host machine
 
 ```
 ./stress_ram.sh host
 ```
 
-### Testing requests with ApacheBench (ab)
+### Scenario 1 testing
+
+`./scenario_1.sh <port number to the python app>`
 
 Testing container 1
 
 ```
-ab -l -r -n 100 -c 10 -k http://localhost:6001/
+./scenario_1.sh 6001
 ```
 
 Testing container 2
 
 ```
-ab -l -r -n 100 -c 10 -k http://localhost:6002/
-```
-
-### Scenario 1 ApacheBench intervals
-
-1.
-
-```
-ab -l -r -n 100 -c 1 -k http://localhost:6001/
-```
-
-2.
-
-```
-ab -l -r -n 100 -c 10 -k http://localhost:6001/
-```
-
-3.
-
-```
-ab -l -r -n 100 -c 25 -k http://localhost:6001/
-```
-
-4.
-
-```
-ab -l -r -n 100 -c 50 -k http://localhost:6001/
+./scenario_1.sh 6002
 ```
