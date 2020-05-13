@@ -34,45 +34,31 @@ This build the image `stresstest_flask_app_benchmark` and tags it as `latest`.
 ./stop.sh
 ```
 
-### Stress test CPU
+### Stress test (CPU and RAM)
 
 #### Docker containers
 
 ```
-./stress_cpu.sh
+./stress_containers.sh
 ```
 
-#### Host machine
+#### Virtual machine
 
 ```
-./stress_cpu.sh host
+./stress_vm.sh
 ```
 
-### Stress test RAM
-
-#### Docker containers
-
-```
-./stress_ram.sh
-```
-
-#### Host machine
-
-```
-./stress_ram.sh host
-```
-
-### Scenario 1 testing
+### Scenario 1 experiments
 
 `./scenario_1.sh <port number to the python app>`
 
-Testing container 1
+Testing instance 1
 
 ```
 ./scenario_1.sh 6001
 ```
 
-Testing container 2
+Testing instance 2
 
 ```
 ./scenario_1.sh 6002
