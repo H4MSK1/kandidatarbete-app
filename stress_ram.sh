@@ -1,8 +1,8 @@
 #!/bin/sh
 
 image_name="stresstest_flask_app_benchmark"
-stress_load_capacity=50
-stress_time_seconds=30
+stress_load_capacity=75
+stress_time_seconds=60
 stress_cmd="stress-ng --vm 1 --vm-bytes ${stress_load_capacity}% --vm-method all --verify -t ${stress_time_seconds}s"
 
 echo "-------------------------------------------------------"

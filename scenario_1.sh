@@ -2,7 +2,8 @@
 
 SERVER_PORT=${1:-6001}    
 SITE="http://localhost:$SERVER_PORT/"
-OUTFILE="scenario1/results-${SERVER_PORT}.txt"
+timestamp=`date +%H-%M-%S`
+OUTFILE="scenario1/$timestamp-results-${SERVER_PORT}.txt"
 DIVIDER="\n====================================================================\n"
 
 if curl --output /dev/null --silent --head --fail "$SITE"; then

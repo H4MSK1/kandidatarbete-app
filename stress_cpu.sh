@@ -2,7 +2,7 @@
 
 image_name="stresstest_flask_app_benchmark"
 stress_load_capacity=75
-stress_time_seconds=30
+stress_time_seconds=60
 stress_cmd="stress-ng --cpu 2 -l ${stress_load_capacity} -t ${stress_time_seconds}s"
 
 echo "-------------------------------------------------------"
